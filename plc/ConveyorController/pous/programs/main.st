@@ -28,8 +28,8 @@ VAR
     fbExitEdge       : R_TRIG;
 
     (* Jam detection *)
-    fbJamTimer    : TON;
-    tJamTimeout   : TIME := T#3s;
+    fbJamMonitor : FB_JamMonitor;
+    tJamTimeout  : TIME := T#3s;
 
 END_VAR
 
@@ -110,22 +110,21 @@ ELSE
 
 END_IF;
 
-(* Monitor conveyor transfer time *)
-fbJamTimer(
-    IN := (iState = 1)
-          AND xItemInTransit
-          AND NOT xStop
-          AND NOT xEmergencyStop,
-    PT := tJamTimeout
+(* Execute jam monitoring function block *)
+fbJamMonitor(
+    xEnable := (iState = 1)
+               AND NOT xStop
+               AND NOT xEmergencyStop,
+
+    xItemInTransit := xItemInTransit,
+    tTimeout := tJamTimeout
 );
 
-(* Detect conveyor jam *)
-IF fbJamTimer.Q AND (iState = 1) THEN
 
-    (* Enter fault state *)
+(* Handle conveyor jam *)
+IF fbJamMonitor.xJamDetected AND (iState = 1) THEN
+
     iState := 2;
-
-    (* Fault code 1: Conveyor jam *)
     iFaultCode := 1;
 
     (* Cancel incomplete transfer *)

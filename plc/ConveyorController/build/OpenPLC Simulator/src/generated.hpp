@@ -53,6 +53,7 @@ constexpr size_t LIST_LENGTH = 254;
 
 namespace strucpp {
 
+class FB_JAMMONITOR;
 class Program_MAIN;
 class Configuration_CONFIG0;
 
@@ -107,8 +108,33 @@ public:
 };
 
 
+class FB_JAMMONITOR;
 class Program_MAIN;
 class Configuration_CONFIG0;
+
+class FB_JAMMONITOR {
+public:
+    // Inputs
+    IEC_BOOL XENABLE;
+    IEC_BOOL XITEMINTRANSIT;
+    IEC_TIME TTIMEOUT;
+    // Outputs
+    IEC_BOOL XJAMDETECTED;
+    IEC_TIME TELAPSED;
+    // Local variables
+    TON FBTIMER;
+
+    // Implicit IEC 61131-3 ENO pin (mirrors EN)
+    IEC_BOOL ENO = true;
+
+    // Constructor
+    FB_JAMMONITOR();
+
+    // Execute function block
+    void operator()();
+
+    virtual ~FB_JAMMONITOR() = default;
+};
 
 class Program_MAIN : public ProgramBase {
 public:
@@ -128,7 +154,7 @@ public:
     IEC_UDINT UDIITEMCOUNT;
     R_TRIG FBENTRYEDGE;
     R_TRIG FBEXITEDGE;
-    TON FBJAMTIMER;
+    FB_JAMMONITOR FBJAMMONITOR;
     IEC_TIME TJAMTIMEOUT;
 
     // Implicit IEC 61131-3 ENO pin (mirrors EN)

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "md5": "2d55e7741fc38dcb65af6c926d807392",
+  "md5": "cc2bc88e3142eb53c7aac0c9f748601a",
   "typeTags": {
     "BOOL": 0,
     "SINT": 1,
@@ -27,7 +27,7 @@
   "arrays": [
     {
       "index": 0,
-      "count": 28
+      "count": 33
     }
   ],
   "leaves": [
@@ -199,34 +199,69 @@
     {
       "arrayIdx": 0,
       "elemIdx": 23,
-      "path": "INSTANCE0.FBJAMTIMER.IN",
+      "path": "INSTANCE0.FBJAMMONITOR.XENABLE",
       "type": "BOOL",
       "size": 1
     },
     {
       "arrayIdx": 0,
       "elemIdx": 24,
-      "path": "INSTANCE0.FBJAMTIMER.PT",
-      "type": "TIME",
-      "size": 8
-    },
-    {
-      "arrayIdx": 0,
-      "elemIdx": 25,
-      "path": "INSTANCE0.FBJAMTIMER.Q",
+      "path": "INSTANCE0.FBJAMMONITOR.XITEMINTRANSIT",
       "type": "BOOL",
       "size": 1
     },
     {
       "arrayIdx": 0,
-      "elemIdx": 26,
-      "path": "INSTANCE0.FBJAMTIMER.ET",
+      "elemIdx": 25,
+      "path": "INSTANCE0.FBJAMMONITOR.TTIMEOUT",
       "type": "TIME",
       "size": 8
     },
     {
       "arrayIdx": 0,
+      "elemIdx": 26,
+      "path": "INSTANCE0.FBJAMMONITOR.XJAMDETECTED",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
       "elemIdx": 27,
+      "path": "INSTANCE0.FBJAMMONITOR.TELAPSED",
+      "type": "TIME",
+      "size": 8
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 28,
+      "path": "INSTANCE0.FBJAMMONITOR.FBTIMER.IN",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 29,
+      "path": "INSTANCE0.FBJAMMONITOR.FBTIMER.PT",
+      "type": "TIME",
+      "size": 8
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 30,
+      "path": "INSTANCE0.FBJAMMONITOR.FBTIMER.Q",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 31,
+      "path": "INSTANCE0.FBJAMMONITOR.FBTIMER.ET",
+      "type": "TIME",
+      "size": 8
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 32,
       "path": "INSTANCE0.TJAMTIMEOUT",
       "type": "TIME",
       "size": 8

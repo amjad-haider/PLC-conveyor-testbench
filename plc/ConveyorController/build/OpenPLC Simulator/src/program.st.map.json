@@ -1,9 +1,14 @@
 {
   "pouOffsets": {
+    "FB_JamMonitor": {
+      "kind": "FUNCTION_BLOCK",
+      "startLine": 1,
+      "endLine": 25
+    },
     "main": {
       "kind": "PROGRAM",
-      "startLine": 1,
-      "endLine": 127
+      "startLine": 27,
+      "endLine": 152
     }
   }
 }
