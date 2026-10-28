@@ -3,13 +3,9 @@
   "communicationPort": "",
   "runtimeIpAddress": "",
   "vendorScreenData": {},
-  "vendorScreenDataByBoard": {},
-  "persistentStorage": {
-    "enabled": false,
-    "path": "",
-    "flushSeconds": 5
+  "vendorScreenDataByBoard": {
+    "OpenPLC Simulator": {}
   },
-  "persistentStorageByBoard": {},
   "selectedPlatformOptions": {},
   "vppPackagePinsByBoard": {}
 }

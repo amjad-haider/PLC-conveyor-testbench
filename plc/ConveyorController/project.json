@@ -4,9 +4,9 @@
     "type": "plc-project"
   },
   "data": {
-    "pous": [],
     "dataTypes": [],
-    "libraries": [],
+    "globalVariableLists": [],
+    "pous": [],
     "configuration": {
       "resource": {
         "tasks": [
@@ -26,6 +26,7 @@
         ],
         "globalVariables": []
       }
-    }
+    },
+    "libraries": []
   }
 }
