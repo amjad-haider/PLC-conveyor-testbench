@@ -6,7 +6,7 @@
 namespace strucpp {
 
 Program_MAIN::Program_MAIN()
-    : XSTART(false), XSTOP(false), XRESET(false), XEMERGENCYSTOP(false), XMOTORENABLE(false), ISTATE(0), IFAULTCODE(0)
+    : XSTART(false), XSTOP(false), XRESET(false), XEMERGENCYSTOP(false), XMOTORENABLE(false), ISTATE(0), IFAULTCODE(0), XENTRYSENSOR(false), XEXITSENSOR(false), XITEMINTRANSIT(false), UDIITEMCOUNT(0), TJAMTIMEOUT(20000000000LL)
 {
 }
 
@@ -42,6 +42,31 @@ void Program_MAIN::run() {
                 IFAULTCODE = 3;
                 break;
         }
+    }
+    FBENTRYEDGE.CLK = XENTRYSENSOR;
+    FBENTRYEDGE();
+    FBENTRYEDGE.ENO = true;
+    FBEXITEDGE.CLK = XEXITSENSOR;
+    FBEXITEDGE();
+    FBEXITEDGE.ENO = true;
+    if ((((ISTATE == 1)) & (!XSTOP)) & (!XEMERGENCYSTOP)) {
+        if ((FBEXITEDGE.Q) & (XITEMINTRANSIT)) {
+            UDIITEMCOUNT = UDIITEMCOUNT + 1;
+            XITEMINTRANSIT = false;
+        } else if ((FBENTRYEDGE.Q) & (!XITEMINTRANSIT)) {
+            XITEMINTRANSIT = true;
+        }
+    } else {
+        XITEMINTRANSIT = false;
+    }
+    FBJAMTIMER.IN = ((((ISTATE == 1)) & (XITEMINTRANSIT)) & (!XSTOP)) & (!XEMERGENCYSTOP);
+    FBJAMTIMER.PT = TJAMTIMEOUT;
+    FBJAMTIMER();
+    FBJAMTIMER.ENO = true;
+    if ((FBJAMTIMER.Q) & ((ISTATE == 1))) {
+        ISTATE = 2;
+        IFAULTCODE = 1;
+        XITEMINTRANSIT = false;
     }
     XMOTORENABLE = (((ISTATE == 1)) & (!XSTOP)) & (!XEMERGENCYSTOP);
 }

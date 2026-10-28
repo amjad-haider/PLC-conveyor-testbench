@@ -16,7 +16,7 @@ extern ::strucpp::Configuration_CONFIG0 g_config;
 
 namespace strucpp { namespace debug {
 
-const Entry debug_arr_0[13] STRUCPP_DEBUG_FLASH = {
+const Entry debug_arr_0[28] STRUCPP_DEBUG_FLASH = {
     { (void*)&g_config.INSTANCE0.XSTART, TAG_BOOL, 0 },  // INSTANCE0.XSTART
     { (void*)&g_config.INSTANCE0.XSTOP, TAG_BOOL, 0 },  // INSTANCE0.XSTOP
     { (void*)&g_config.INSTANCE0.XRESET, TAG_BOOL, 0 },  // INSTANCE0.XRESET
@@ -30,6 +30,21 @@ const Entry debug_arr_0[13] STRUCPP_DEBUG_FLASH = {
     { (void*)&g_config.INSTANCE0.FBRESETEDGE.CLK, TAG_BOOL, 0 },  // INSTANCE0.FBRESETEDGE.CLK
     { (void*)&g_config.INSTANCE0.FBRESETEDGE.Q, TAG_BOOL, 0 },  // INSTANCE0.FBRESETEDGE.Q
     { (void*)&g_config.INSTANCE0.FBRESETEDGE.M, TAG_BOOL, LEAF_FLAG_RETAIN },  // INSTANCE0.FBRESETEDGE.M
+    { (void*)&g_config.INSTANCE0.XENTRYSENSOR, TAG_BOOL, 0 },  // INSTANCE0.XENTRYSENSOR
+    { (void*)&g_config.INSTANCE0.XEXITSENSOR, TAG_BOOL, 0 },  // INSTANCE0.XEXITSENSOR
+    { (void*)&g_config.INSTANCE0.XITEMINTRANSIT, TAG_BOOL, 0 },  // INSTANCE0.XITEMINTRANSIT
+    { (void*)&g_config.INSTANCE0.UDIITEMCOUNT, TAG_UDINT, 0 },  // INSTANCE0.UDIITEMCOUNT
+    { (void*)&g_config.INSTANCE0.FBENTRYEDGE.CLK, TAG_BOOL, 0 },  // INSTANCE0.FBENTRYEDGE.CLK
+    { (void*)&g_config.INSTANCE0.FBENTRYEDGE.Q, TAG_BOOL, 0 },  // INSTANCE0.FBENTRYEDGE.Q
+    { (void*)&g_config.INSTANCE0.FBENTRYEDGE.M, TAG_BOOL, LEAF_FLAG_RETAIN },  // INSTANCE0.FBENTRYEDGE.M
+    { (void*)&g_config.INSTANCE0.FBEXITEDGE.CLK, TAG_BOOL, 0 },  // INSTANCE0.FBEXITEDGE.CLK
+    { (void*)&g_config.INSTANCE0.FBEXITEDGE.Q, TAG_BOOL, 0 },  // INSTANCE0.FBEXITEDGE.Q
+    { (void*)&g_config.INSTANCE0.FBEXITEDGE.M, TAG_BOOL, LEAF_FLAG_RETAIN },  // INSTANCE0.FBEXITEDGE.M
+    { (void*)&g_config.INSTANCE0.FBJAMTIMER.IN, TAG_BOOL, 0 },  // INSTANCE0.FBJAMTIMER.IN
+    { (void*)&g_config.INSTANCE0.FBJAMTIMER.PT, TAG_TIME, 0 },  // INSTANCE0.FBJAMTIMER.PT
+    { (void*)&g_config.INSTANCE0.FBJAMTIMER.Q, TAG_BOOL, 0 },  // INSTANCE0.FBJAMTIMER.Q
+    { (void*)&g_config.INSTANCE0.FBJAMTIMER.ET, TAG_TIME, 0 },  // INSTANCE0.FBJAMTIMER.ET
+    { (void*)&g_config.INSTANCE0.TJAMTIMEOUT, TAG_TIME, 0 },  // INSTANCE0.TJAMTIMEOUT
 };
 
 const Entry* const debug_arrays[1] STRUCPP_DEBUG_FLASH = {
@@ -37,22 +52,24 @@ const Entry* const debug_arrays[1] STRUCPP_DEBUG_FLASH = {
 };
 
 const uint16_t debug_array_counts[1] STRUCPP_DEBUG_FLASH = {
-    13,
+    28,
 };
 
 const uint8_t debug_array_count = 1;
 
 // Retained leaves, in the order the retain blob packs them.
-const RetainVar retain_vars[2] STRUCPP_DEBUG_FLASH = {
+const RetainVar retain_vars[4] STRUCPP_DEBUG_FLASH = {
     { 0, 9 },  // INSTANCE0.FBSTARTEDGE.M
     { 0, 12 },  // INSTANCE0.FBRESETEDGE.M
+    { 0, 19 },  // INSTANCE0.FBENTRYEDGE.M
+    { 0, 22 },  // INSTANCE0.FBEXITEDGE.M
 };
 
-const uint16_t retain_var_count = 2;
+const uint16_t retain_var_count = 4;
 
 // Identity of the retain LAYOUT (ordered path|typeTag), not of the
 // program: a body edit keeps retained values, a declaration change
 // invalidates them.
-const uint32_t retain_layout_hash = 0x56724060;
+const uint32_t retain_layout_hash = 0xbd005d38;
 
 } } // namespace strucpp::debug

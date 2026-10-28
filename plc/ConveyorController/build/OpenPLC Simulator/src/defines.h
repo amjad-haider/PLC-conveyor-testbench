@@ -1,7 +1,7 @@
 
 
 //Program MD5
-#define PROGRAM_MD5 "29c2a1a4664074eac4463c7494eaedda"
+#define PROGRAM_MD5 "2d55e7741fc38dcb65af6c926d807392"
 
 //Comms Configuration
 #define SIMULATOR_MODE
@@ -26,4 +26,4 @@
 //Arduino libraries
 
 //Retain
-#define OPLC_RETAIN_BLOB_SIZE 16
+#define OPLC_RETAIN_BLOB_SIZE 18

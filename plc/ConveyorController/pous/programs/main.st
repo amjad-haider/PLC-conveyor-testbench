@@ -14,6 +14,23 @@ VAR
     (* Rising-edge detectors *)
     fbStartEdge     : R_TRIG;
     fbResetEdge     : R_TRIG;
+
+    (* Conveyor sensors *)
+    xEntrySensor     : BOOL := FALSE;
+    xExitSensor      : BOOL := FALSE;
+
+    (* Product tracking *)
+    xItemInTransit   : BOOL := FALSE;
+    udiItemCount     : UDINT := 0;
+
+    (* Sensor edge detection *)
+    fbEntryEdge      : R_TRIG;
+    fbExitEdge       : R_TRIG;
+
+    (* Jam detection *)
+    fbJamTimer    : TON;
+    tJamTimeout   : TIME := T#3s;
+
 END_VAR
 
 (* Detect rising edges *)
@@ -65,6 +82,56 @@ ELSE
 
 END_IF;
 
+(* Detect sensor rising edges *)
+fbEntryEdge(CLK := xEntrySensor);
+fbExitEdge(CLK := xExitSensor);
+
+
+(* Conveyor product tracking *)
+IF (iState = 1) AND NOT xStop AND NOT xEmergencyStop THEN
+
+    (* Product has reached the exit *)
+    IF fbExitEdge.Q AND xItemInTransit THEN
+
+        udiItemCount := udiItemCount + 1;
+        xItemInTransit := FALSE;
+
+    (* New product detected at entry *)
+    ELSIF fbEntryEdge.Q AND NOT xItemInTransit THEN
+
+        xItemInTransit := TRUE;
+
+    END_IF;
+
+ELSE
+
+    (* Discard incomplete transfer when conveyor stops *)
+    xItemInTransit := FALSE;
+
+END_IF;
+
+(* Monitor conveyor transfer time *)
+fbJamTimer(
+    IN := (iState = 1)
+          AND xItemInTransit
+          AND NOT xStop
+          AND NOT xEmergencyStop,
+    PT := tJamTimeout
+);
+
+(* Detect conveyor jam *)
+IF fbJamTimer.Q AND (iState = 1) THEN
+
+    (* Enter fault state *)
+    iState := 2;
+
+    (* Fault code 1: Conveyor jam *)
+    iFaultCode := 1;
+
+    (* Cancel incomplete transfer *)
+    xItemInTransit := FALSE;
+
+END_IF;
 
 (* Motor output *)
 xMotorEnable :=

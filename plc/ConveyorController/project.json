@@ -27,6 +27,23 @@
         "globalVariables": []
       }
     },
-    "libraries": []
+    "libraries": [],
+    "debugVariables": {
+      "pous": {
+        "main": [
+          "xStart",
+          "xStop",
+          "xReset",
+          "xEmergencyStop",
+          "xMotorEnable",
+          "iState",
+          "iFaultCode",
+          "xEntrySensor",
+          "xExitSensor",
+          "xItemInTransit",
+          "udiItemCount"
+        ]
+      }
+    }
   }
 }

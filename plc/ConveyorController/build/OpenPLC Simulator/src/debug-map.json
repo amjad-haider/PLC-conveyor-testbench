@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "md5": "29c2a1a4664074eac4463c7494eaedda",
+  "md5": "2d55e7741fc38dcb65af6c926d807392",
   "typeTags": {
     "BOOL": 0,
     "SINT": 1,
@@ -27,7 +27,7 @@
   "arrays": [
     {
       "index": 0,
-      "count": 13
+      "count": 28
     }
   ],
   "leaves": [
@@ -123,6 +123,113 @@
       "type": "BOOL",
       "size": 1,
       "retain": true
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 13,
+      "path": "INSTANCE0.XENTRYSENSOR",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 14,
+      "path": "INSTANCE0.XEXITSENSOR",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 15,
+      "path": "INSTANCE0.XITEMINTRANSIT",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 16,
+      "path": "INSTANCE0.UDIITEMCOUNT",
+      "type": "UDINT",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 17,
+      "path": "INSTANCE0.FBENTRYEDGE.CLK",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 18,
+      "path": "INSTANCE0.FBENTRYEDGE.Q",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 19,
+      "path": "INSTANCE0.FBENTRYEDGE.M",
+      "type": "BOOL",
+      "size": 1,
+      "retain": true
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 20,
+      "path": "INSTANCE0.FBEXITEDGE.CLK",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 21,
+      "path": "INSTANCE0.FBEXITEDGE.Q",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 22,
+      "path": "INSTANCE0.FBEXITEDGE.M",
+      "type": "BOOL",
+      "size": 1,
+      "retain": true
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 23,
+      "path": "INSTANCE0.FBJAMTIMER.IN",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 24,
+      "path": "INSTANCE0.FBJAMTIMER.PT",
+      "type": "TIME",
+      "size": 8
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 25,
+      "path": "INSTANCE0.FBJAMTIMER.Q",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 26,
+      "path": "INSTANCE0.FBJAMTIMER.ET",
+      "type": "TIME",
+      "size": 8
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 27,
+      "path": "INSTANCE0.TJAMTIMEOUT",
+      "type": "TIME",
+      "size": 8
     }
   ],
   "retainVars": [
@@ -137,8 +244,20 @@
       "elemIdx": 12,
       "path": "INSTANCE0.FBRESETEDGE.M",
       "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 19,
+      "path": "INSTANCE0.FBENTRYEDGE.M",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 22,
+      "path": "INSTANCE0.FBEXITEDGE.M",
+      "size": 1
     }
   ],
-  "retainLayoutHash": "56724060",
-  "retainBlobSize": 16
+  "retainLayoutHash": "bd005d38",
+  "retainBlobSize": 18
 }

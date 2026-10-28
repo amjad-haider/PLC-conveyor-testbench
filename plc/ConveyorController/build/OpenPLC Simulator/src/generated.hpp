@@ -58,6 +58,7 @@ class Configuration_CONFIG0;
 
 // Library: iec-standard-fb
 class R_TRIG;
+class TON;
 class R_TRIG {
 public:
     // Inputs
@@ -79,6 +80,32 @@ public:
     virtual ~R_TRIG() = default;
 };
 
+class TON {
+public:
+    // Inputs
+    IEC_BOOL IN;
+    IEC_TIME PT;
+    // Outputs
+    IEC_BOOL Q;
+    IEC_TIME ET;
+    // Local variables
+    IEC_SINT STATE;
+    IEC_BOOL PREV_IN;
+    IEC_TIME CURRENT_TIME;
+    IEC_TIME START_TIME;
+
+    // Implicit IEC 61131-3 ENO pin (mirrors EN)
+    IEC_BOOL ENO = true;
+
+    // Constructor
+    TON();
+
+    // Execute function block
+    void operator()();
+
+    virtual ~TON() = default;
+};
+
 
 class Program_MAIN;
 class Configuration_CONFIG0;
@@ -95,6 +122,14 @@ public:
     IEC_INT IFAULTCODE;
     R_TRIG FBSTARTEDGE;
     R_TRIG FBRESETEDGE;
+    IEC_BOOL XENTRYSENSOR;
+    IEC_BOOL XEXITSENSOR;
+    IEC_BOOL XITEMINTRANSIT;
+    IEC_UDINT UDIITEMCOUNT;
+    R_TRIG FBENTRYEDGE;
+    R_TRIG FBEXITEDGE;
+    TON FBJAMTIMER;
+    IEC_TIME TJAMTIMEOUT;
 
     // Implicit IEC 61131-3 ENO pin (mirrors EN)
     IEC_BOOL ENO = true;

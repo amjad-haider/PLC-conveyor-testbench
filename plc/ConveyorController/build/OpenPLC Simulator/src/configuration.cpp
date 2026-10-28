@@ -15,6 +15,34 @@ void R_TRIG::operator()() {
     M = CLK;
 }
 
+TON::TON() {
+    // Initialize variables
+}
+
+void TON::operator()() {
+    CURRENT_TIME = TIME();
+    if (((((STATE == 0)) & (NOT(PREV_IN))) & (IN))) {
+        STATE = 1;
+        Q = false;
+        START_TIME = CURRENT_TIME;
+    } else {
+        if ((NOT(IN))) {
+            ET = 0LL;
+            Q = false;
+            STATE = 0;
+        } else if ((STATE == 1)) {
+            if (((START_TIME + PT) <= CURRENT_TIME)) {
+                STATE = 2;
+                Q = true;
+                ET = PT;
+            } else {
+                ET = CURRENT_TIME - START_TIME;
+            }
+        }
+    }
+    PREV_IN = IN;
+}
+
 
 // =============================================================================
 // Located Variables Descriptor Array
