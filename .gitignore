@@ -1,0 +1,39 @@
+# OpenPLC Editor / Simulator
+# Keep PLC source files and project configuration
+**/build/
+
+# .NET / C# build outputs
+[Bb]in/
+[Oo]bj/
+artifacts/
+[Tt]est[Rr]esults/
+*.trx
+*.coverage
+*.coveragexml
+
+# IDE-specific files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
