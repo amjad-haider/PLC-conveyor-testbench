@@ -23,9 +23,8 @@ VAR
     xItemInTransit   : BOOL := FALSE;
     udiItemCount     : UDINT := 0;
 
-    (* Sensor edge detection *)
-    fbEntryEdge      : R_TRIG;
-    fbExitEdge       : R_TRIG;
+    (* Product tracking function block *)
+    fbItemTracker : FB_ItemTracker;
 
     (* Jam detection *)
     fbJamMonitor : FB_JamMonitor;
@@ -82,33 +81,20 @@ ELSE
 
 END_IF;
 
-(* Detect sensor rising edges *)
-fbEntryEdge(CLK := xEntrySensor);
-fbExitEdge(CLK := xExitSensor);
+(* Execute product tracking function block *)
+fbItemTracker(
+    xRunEnable := (iState = 1)
+                  AND NOT xStop
+                  AND NOT xEmergencyStop,
+
+    xEntrySensor := xEntrySensor,
+    xExitSensor := xExitSensor
+);
 
 
-(* Conveyor product tracking *)
-IF (iState = 1) AND NOT xStop AND NOT xEmergencyStop THEN
-
-    (* Product has reached the exit *)
-    IF fbExitEdge.Q AND xItemInTransit THEN
-
-        udiItemCount := udiItemCount + 1;
-        xItemInTransit := FALSE;
-
-    (* New product detected at entry *)
-    ELSIF fbEntryEdge.Q AND NOT xItemInTransit THEN
-
-        xItemInTransit := TRUE;
-
-    END_IF;
-
-ELSE
-
-    (* Discard incomplete transfer when conveyor stops *)
-    xItemInTransit := FALSE;
-
-END_IF;
+(* Update main program signals *)
+xItemInTransit := fbItemTracker.xItemInTransit;
+udiItemCount := fbItemTracker.udiItemCount;
 
 (* Execute jam monitoring function block *)
 fbJamMonitor(
