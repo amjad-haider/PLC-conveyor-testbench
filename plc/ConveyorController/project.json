@@ -35,11 +35,11 @@
           "xStop",
           "xReset",
           "xEmergencyStop",
+          "xEntrySensor",
+          "xExitSensor",
           "xMotorEnable",
           "iState",
           "iFaultCode",
-          "xEntrySensor",
-          "xExitSensor",
           "xItemInTransit",
           "udiItemCount"
         ]
