@@ -1,0 +1,30 @@
+{
+  "name": "converyor_modbus",
+  "protocol": "modbus-tcp",
+  "modbusSlaveConfig": {
+    "enabled": true,
+    "transports": [
+      "tcp"
+    ],
+    "networkInterface": "0.0.0.0",
+    "port": 1502,
+    "bufferMapping": {
+      "holdingRegisters": {
+        "qwCount": 1024,
+        "mwCount": 1024,
+        "mdCount": 1024,
+        "mlCount": 1024
+      },
+      "coils": {
+        "qxBits": 8,
+        "mxBits": 0
+      },
+      "discreteInputs": {
+        "ixBits": 8192
+      },
+      "inputRegisters": {
+        "iwCount": 1024
+      }
+    }
+  }
+}

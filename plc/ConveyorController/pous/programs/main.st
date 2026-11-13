@@ -11,7 +11,7 @@ VAR
     xExitSensor     : BOOL := FALSE;
 
     (* Controller status *)
-    xMotorEnable    : BOOL := FALSE;
+    xMotorEnable    : BOOL AT %QX0.0 := FALSE;
     iState          : INT := 0;
     iFaultCode      : INT := 0;
 
